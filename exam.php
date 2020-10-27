@@ -41,7 +41,7 @@ if (isset($_POST['EXAM'])) {
 <div id="nav2">
 <ul>
 <li><a href="admin.php">Admin Side</a>
-<li><a href="#">Exam</a>
+<li><a href="exam.php">Exam</a>
 <li><a href="">User</a>
 <li><a href="homepage.php">Logout</a>
 </ul>
@@ -62,6 +62,7 @@ $sql2="select * from online_exam";
 $result=$conn->query($sql2);
 if ($result->num_rows>0) {
     while ($rows=$result->fetch_assoc()) {
+        $id=$rows['online_exam_id'];
         $t=$rows['online_exam_title'];
         $d=$rows['online_exam_datetime'];
         $tot=$rows['total_question'];
@@ -74,7 +75,7 @@ if ($result->num_rows>0) {
         <td>'.$mr.'</td>
         <td>'.$mw.'</td>
         <td id="row" ><a href="">Add question</a></td>
-        <td id="row" ><a href="edit.php">Edit</a>/<a href="delete.php">Delete</a></td>
+        <td id="row" ><a href="editExam.php?id='.$id.'">Edit</a> / <a href="deleteExam.php?id='.$id.'">Delete</a></td>
         </tr>';
     }
 }
@@ -85,7 +86,7 @@ if ($result->num_rows>0) {
 <label>Exam Title:</label>
 <input type="text" name="examtitle" required><br><br>
 <label>Exam date_time:</label>
-<input type="text" name="examdt" value="<?php echo $datetime;?>"><br><br>
+<input type="text" name="examdt" value="<?php echo $datetime;?>" disabled><br><br>
 <label>Total Question:</label>
 <input type="text" name="examques" required><br><br>
 <label>Marks per_right_ans:</label>

@@ -155,7 +155,23 @@ td{
     border: 1px solid black;
     margin: 20px 0 0 300px;
 }
+#examform2{
+    width: 800px;
+    height: 400px;
+    border: 1px solid black;
+    margin: 20px 0 0 300px;
+}
+
 #examform label{
+    float: left;
+    width: 200px;
+    font-size:16px;
+    color: black;
+    font-weight:200px;
+    font-family: sans-serif;
+   padding-top: 30px;
+}
+#examform2 label{
     float: left;
     width: 200px;
     font-size:16px;
@@ -174,6 +190,15 @@ td{
     border-radius: 0.4em;
 }
 
+#examform2 input{
+    margin-top: 25px;
+    float: right;
+    width: 500px;
+    height: 25px;
+    margin-right: 35px;
+    border-radius: 0.4em;
+}
+
 #examform input[type=submit]{
     width: 200px;
     float: left;
@@ -183,7 +208,25 @@ td{
     color: white;
 }
 
+
+#examform2 input[type=submit]{
+    width: 200px;
+    float: left;
+    margin-left: 270px;
+    height: 40px;
+    background-color:blueviolet;
+    color: white;
+}
+
 #examform input[type=reset]{
+    width: 200px;
+    float: left;
+    height: 40px;   
+    background-color:red;
+    border-radius: 0.5em;
+}
+
+#examform2 input[type=reset]{
     width: 200px;
     float: left;
     height: 40px;   
