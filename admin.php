@@ -12,15 +12,15 @@
  */
 ?>
 <?php include 'header.php';?>
-    <div id="add">
+<div id="add">
 <div id="nav2">
-<ul id="ull">
-<li><a href="#">Admin Side</a>
-<li><a href="#">Exam</a>
+<ul>
+<li><a href="admin.php">Admin Side</a>
+<li><a href="exam.php">Exam</a>
 <li><a href="">User</a>
-<li><a href="logout.php">Logout</a>
-
+<li><a href="homepage.php">Logout</a>
 </ul>
+Click on Exam tab to view exam list....
 </div>
 </div>
 <?php include 'footer.php';?>
