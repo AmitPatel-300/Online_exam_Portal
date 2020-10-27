@@ -50,12 +50,8 @@ if (isset($_POST['submit'])) {
     } 
 }
 ?>
-<body>
-<div id="main">
-<?php echo $err;?>
-<?php echo $login;?>
-<?php echo $emailerr;?>
-<?php echo $se;?>
+<div id="add">
+<div id="nav2">
 <div id="sub">
 <form action="homepage.php" method="POST">
 <label>LOGIN TYPE</label>
@@ -68,7 +64,8 @@ if (isset($_POST['submit'])) {
 <input type="email" name="email" required><br>
 <label>Password:</label>
 <input type="password" name="pass" required><br>
-<input type="submit" name="submit" value="submit">
+<input type="submit" name="submit" value="login"><br><br>
+<a href="user/register.php">Register Here</a>
 </form>
 </div>
 </div>
