@@ -275,6 +275,7 @@ td{
 
 #row a{
     background-color:black;
+    color:yellow;
 }
 #row a:hover{
     background-color:orchid;

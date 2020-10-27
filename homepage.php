@@ -13,6 +13,7 @@
 $err='';
 $emailerr='';
 $login='';
+session_start();
 ?>
  
 <?php include 'header.php'?>
@@ -34,6 +35,7 @@ if (isset($_POST['submit'])) {
         if ($result->num_rows>0) {
             while ($rows=$result->fetch_assoc()) {
                 if ($rows['admin_email']== $email && $rows['admin_pass']==$pass) {
+                    $_SESSION['adminEmail']=$email;
                     header('location:admin.php');
                 } else {
                     $login="Email or password not match";
@@ -53,6 +55,7 @@ if (isset($_POST['submit'])) {
 <?php echo $err;?>
 <?php echo $login;?>
 <?php echo $emailerr;?>
+<?php echo $se;?>
 <div id="sub">
 <form action="homepage.php" method="POST">
 <label>LOGIN TYPE</label>

@@ -18,7 +18,6 @@ $datetime=date("Y-m-d H:i:s");
 <?php
 if (isset($_POST['EXAM'])) {
     $name=isset($_POST['examtitle'])?$_POST['examtitle']:'';
-    $date=isset($_POST['examdt'])?$_POST['examdt']:'';
     $ques=isset($_POST['examques'])?$_POST['examques']:'';
     $right=isset($_POST['examright'])?$_POST['examright']:'';
     $wrong=isset($_POST['examwrong'])?$_POST['examwrong']:'';
@@ -27,7 +26,7 @@ if (isset($_POST['EXAM'])) {
 
     $sql="INSERT into online_exam (`online_exam_title`, `online_exam_datetime`, 
     `total_question`, `marks_per_right_ans`, `marks_per_wrong_ans`) VALUES 
-    ('".$name."', '".$date."', '".$ques."', '".$right."',
+    ('".$name."', '".$datetime."', '".$ques."', '".$right."',
     '".$wrong."')";
     if ($conn-> query($sql) === true) {
         header("location:exam.php");
@@ -43,7 +42,7 @@ if (isset($_POST['EXAM'])) {
 <li><a href="admin.php">Admin Side</a>
 <li><a href="exam.php">Exam</a>
 <li><a href="">User</a>
-<li><a href="homepage.php">Logout</a>
+<li><a href="logout.php">Logout</a>
 </ul>
 Online exam List
 <input id="exam" type="submit" value="ADD">
@@ -74,7 +73,7 @@ if ($result->num_rows>0) {
         <td>'.$tot.'</td>
         <td>'.$mr.'</td>
         <td>'.$mw.'</td>
-        <td id="row" ><a href="addQues.php?id='.$id.'">Add question</a></td>
+        <td id="row" ><a href="addQues.php?id='.$id.'">Add question</a>/<a href="viewQues.php?id='.$id.'">View question</a></td>
         <td id="row" ><a href="editExam.php?id='.$id.'">Edit</a> / <a href="deleteExam.php?id='.$id.'">Delete</a></td>
         </tr>';
     }

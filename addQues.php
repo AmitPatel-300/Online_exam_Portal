@@ -24,7 +24,7 @@ if (isset($_POST['Ques'])) {
     $opt3=isset($_POST['opt3'])?$_POST['opt3']:'';
     $opt4=isset($_POST['opt4'])?$_POST['opt4']:'';
     $ans=isset($_POST['ans'])?$_POST['ans']:'';
-    echo $testid;
+    
 
     $sql="INSERT into question (`online_exam_id`, `ques_title`, 
     `option1`,  `option2`,`option3`, `option4`,`ansoption`) VALUES 
@@ -44,7 +44,7 @@ if (isset($_POST['Ques'])) {
 <li><a href="admin.php">Admin Side</a>
 <li><a href="exam.php">Exam</a>
 <li><a href="">User</a>
-<li><a href="homepage.php">Logout</a>
+<li><a href="logout.php">Logout</a>
 </ul>
 <div id="quesform">
 <form action="addQues.php" method="POST">

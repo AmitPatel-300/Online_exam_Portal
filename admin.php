@@ -11,6 +11,14 @@
  * @link     http://localhost/
  */
 ?>
+<?php
+session_start();
+$email=$_SESSION['adminEmail'];
+if ($email == '') {
+    $se="please login first";
+    header('location:homepage.php');
+}
+?>
 <?php include 'header.php';?>
 <div id="add">
 <div id="nav2">
@@ -18,9 +26,10 @@
 <li><a href="admin.php">Admin Side</a>
 <li><a href="exam.php">Exam</a>
 <li><a href="">User</a>
-<li><a href="homepage.php">Logout</a>
+<li><a href="logout.php">Logout</a>
 </ul>
 Click on Exam tab to view exam list....
 </div>
 </div>
+
 <?php include 'footer.php';?>

@@ -37,7 +37,7 @@ if ($result->num_rows>0) {
 <li><a href="admin.php">Admin Side</a>
 <li><a href="exam.php">Exam</a>
 <li><a href="">User</a>
-<li><a href="homepage.php">Logout</a>
+<li><a href="logout.php">Logout</a>
 </ul>
 <div id="examform2">
 <form action="updateExam.php?id=<?php echo $id;?>" method="POST">

@@ -15,6 +15,7 @@
 $siteurl="http://localhost//training/Exam/admin.php";
 
 $errors = array();
+$se='';
 $message='';
 
 $dbhost="localhost";
