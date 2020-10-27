@@ -74,7 +74,7 @@ if ($result->num_rows>0) {
         <td>'.$tot.'</td>
         <td>'.$mr.'</td>
         <td>'.$mw.'</td>
-        <td id="row" ><a href="">Add question</a></td>
+        <td id="row" ><a href="addQues.php?id='.$id.'">Add question</a></td>
         <td id="row" ><a href="editExam.php?id='.$id.'">Edit</a> / <a href="deleteExam.php?id='.$id.'">Delete</a></td>
         </tr>';
     }
