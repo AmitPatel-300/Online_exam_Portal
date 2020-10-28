@@ -19,6 +19,7 @@ $phoneerr='';
 if (isset($_POST['register'])) {
     $un=isset($_POST['uname'])?$_POST['uname']:'';
     $email=isset($_POST['email'])?$_POST['email']:'';
+    $pass=isset($_POST['pass'])?$_POST['pass']:'';
     $dob=isset($_POST['dob'])?$_POST['dob']:'';
     $mno=isset($_POST['mno'])?$_POST['mno']:'';
     $add=isset($_POST['add'])?$_POST['add']:'';
@@ -28,21 +29,21 @@ if (isset($_POST['register'])) {
     if ($result2->num_rows>0) {
         while ($row=$result2->fetch_assoc()) {
             if ($email == $row['email'] ) {
-                $emailerr="email already exist";
-            } else if ($mno == $row['mobile_no'] ) {
-                $emailerr="Mobile no. already exist";
-            } else {
-                    $sql="INSERT into users (`user_name`, `email`, 
-                    `dob`, `mobile_no`, `address`) VALUES 
-                    ('".$un."', '".$email."', '".$dob."', '".$mno."',
-                    '".$add."')";
-                if ($conn-> query($sql) === true) {
-                    echo '<script>alert("Registration Successful")</script>';
-                } else {
-                        $errors= array('input' => 'form', 'msg'=> $conn->error);
-                }
+                echo '<script>alert("Email already exist")</script>';
+            }
+            if ($mno == $row['mobile_no'] ) {
+                echo '<script>alert("Mobile no. already exist")</script>';
             }
         }
+    }
+    $sql="INSERT into users (`user_name`, `email`,`password`, 
+    `dob`, `mobile_no`, `address`) VALUES 
+    ('".$un."', '".$email."', '".$pass."', '".$dob."', '".$mno."',
+    '".$add."')";
+    if ($conn-> query($sql) === true) {
+        echo '<script>alert("Registration Successful")</script>';
+    } else {
+            $errors= array('input' => 'form', 'msg'=> $conn->error);
     }
     $conn->close();
 }
@@ -57,6 +58,8 @@ Registration Form
 <input type="text" name="uname" required><br><br>
 <label>Email :</label>
 <input type="email" name="email" required><br><br>
+<label>Password :</label>
+<input type="password" name="pass" required><br><br>
 <label>DOB :</label>
 <input type="date" name="dob" required><br><br>
 <label>Mobile No :</label>

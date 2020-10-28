@@ -41,7 +41,7 @@ if (isset($_POST['EXAM'])) {
 <ul>
 <li><a href="admin.php">Admin Side</a>
 <li><a href="exam.php">Exam</a>
-<li><a href="">User</a>
+<li><a href="user.php">User</a>
 <li><a href="logout.php">Logout</a>
 </ul>
 Online exam List

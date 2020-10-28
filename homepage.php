@@ -46,8 +46,22 @@ if (isset($_POST['submit'])) {
         
     }
     if ($sel == '2') {
-        header('location:user.php');
-    } 
+        
+        $sql="select * from users";
+        $result=$conn->query($sql);
+        if ($result->num_rows>0) {
+            while ($rows=$result->fetch_assoc()) {
+                if ($rows['email']== $email && $rows['password']==$pass) {
+                    $_SESSION['userEmail']=$email;
+                    header('location:user/user.php');
+                } else {
+                    $login="Email or password not match";
+                }
+
+            }
+        }
+        
+    }
 }
 ?>
 <div id="add">
@@ -65,7 +79,7 @@ if (isset($_POST['submit'])) {
 <label>Password:</label>
 <input type="password" name="pass" required><br>
 <input type="submit" name="submit" value="login"><br><br>
-<a href="user/register.php">Register Here</a>
+<a href="user/register.php">New User?</a>
 </form>
 </div>
 </div>

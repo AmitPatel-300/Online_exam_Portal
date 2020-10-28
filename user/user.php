@@ -13,19 +13,19 @@
 ?>
 <?php
 session_start();
-$email=$_SESSION['adminEmail'];
+$email=$_SESSION['userEmail'];
 if ($email == '') {
     $se="please login first";
-    header('location:homepage.php');
+    header('location:../homepage.php');
 }
 ?>
 <?php include 'header.php';?>
 <div id="add">
 <div id="nav2">
 <ul>
-<li><a href="admin.php">Admin Side</a>
-<li><a href="exam.php">Exam</a>
-<li><a href="user.php">User</a>
+<li><a href="user.php">User Side</a>
+<li><a href="#">Exam</a>
+<li><a href="profile.php">Profile</a>
 <li><a href="logout.php">Logout</a>
 </ul>
 Click on Exam tab to view exam list....
