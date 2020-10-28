@@ -12,9 +12,31 @@
  */
 global $id;
 $id=$_REQUEST['id'];
+global $count;
+global $question;
 ?>
 <?php include 'header.php';?>
 <?php include 'config.php';?>
+<?php
+  $sql2="select * from question where online_exam_id='".$id."'";
+  $result2=$conn->query($sql2);
+  $count=$result2->num_rows;
+?>
+<?php
+  $sql3="select * from online_exam where online_exam_id='".$id."'";
+  $result3=$conn->query($sql3);
+if ($result3->num_rows>0) {
+    while ($rows3=$result3->fetch_assoc()) {
+        $question=$rows3['total_question'];
+    }
+
+}
+?>
+<?php
+if ($count==$question) {
+    header('location:exam.php');
+}
+?>
 <?php
 if (isset($_POST['Ques'])) {
     $testid=isset($_POST['sel'])?$_POST['sel']:'';
@@ -24,7 +46,6 @@ if (isset($_POST['Ques'])) {
     $opt3=isset($_POST['opt3'])?$_POST['opt3']:'';
     $opt4=isset($_POST['opt4'])?$_POST['opt4']:'';
     $ans=isset($_POST['ans'])?$_POST['ans']:'';
-    
 
     $sql="INSERT into question (`online_exam_id`, `ques_title`, 
     `option1`,  `option2`,`option3`, `option4`,`ansoption`) VALUES 
@@ -33,7 +54,7 @@ if (isset($_POST['Ques'])) {
     if ($conn-> query($sql) === true) {
         header("location:exam.php");
     } else {
-         $errors= array('input' => 'form', 'msg'=> $conn->error);
+        $errors= array('input' => 'form', 'msg'=> $conn->error);
     }
     $conn->close();
 }

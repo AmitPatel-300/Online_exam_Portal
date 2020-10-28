@@ -39,6 +39,7 @@ $result=$conn->query($sql2);
 if ($result->num_rows>0) {
     while ($rows=$result->fetch_assoc()) {
         $eid=$rows['ques_id'];
+        $examid=$rows['online_exam_id'];
         $qt=$rows['ques_title'];
         $opt1=$rows['option1'];
         $opt2=$rows['option2'];
@@ -46,7 +47,7 @@ if ($result->num_rows>0) {
         $opt4=$rows['option4'];
         $ans=$rows['ansoption'];
         echo '<tr>
-        <td>'.$eid.'</td>
+        <td>'.$examid.'</td>
         <td>'.$qt.'</td>
         <td>'.$opt1.'</td>
         <td>'.$opt2.'</td>

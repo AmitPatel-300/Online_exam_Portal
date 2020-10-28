@@ -45,7 +45,7 @@ if (isset($_POST['EXAM'])) {
 <li><a href="logout.php">Logout</a>
 </ul>
 Online exam List
-<input id="exam" type="submit" value="ADD">
+<input id="exam" type="submit" value="ADD Exam">
 <table>
 <tr>
 <th>Exam Title</th>

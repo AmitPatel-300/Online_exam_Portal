@@ -20,7 +20,7 @@ $id=$_REQUEST['id'];
 $sql="DELETE FROM question WHERE ques_id='".$id."'";
 $result=$conn->query($sql);
 if ($result === true) {
-    header('location:viewQues.php'); 
+    header('location:exam.php'); 
 } else {
     $errors= array('input' => 'form', 'msg'=> $conn->error);
 }
