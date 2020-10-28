@@ -317,3 +317,11 @@ td{
 float: left;
 padding-left: 20px;
 }
+
+#NP{
+    float: left;
+    padding-left: 10px;
+    margin-left: 20px;
+    background-color:darkblue;
+    width: 80px;
+}
