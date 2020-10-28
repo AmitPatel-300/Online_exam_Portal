@@ -294,3 +294,26 @@ td{
     width: 450px;
     height: 30px;
 }
+#startexam{
+    width: justify;
+    height: 200px;
+    margin-top: 50px;
+    border: 1px solid black;
+}
+#ques{
+    text-align: left;
+    padding-left: 30px;
+}
+
+#radioques{
+    text-align: left;
+    padding-left: 30px;
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: lighter;
+}
+
+#startexam input[type=radio]{
+float: left;
+padding-left: 20px;
+}

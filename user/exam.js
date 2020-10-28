@@ -1,13 +1,17 @@
 $(document).ready(function (){
-    $("#examform").hide();
-    $('#selexam').hide();
 
-    $("#exam").click(function(){
+    $("#selexam").click(function(){
         $("#examform").show();
     });
+
+    $('#selexam').hide();
     
     $('#optionselector').change(function (){
         $("#selexam").show();
     });
+
+    $('#selexam').load(function(){
+        $("#examform").show();
+    })
 
 });
