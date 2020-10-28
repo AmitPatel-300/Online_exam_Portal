@@ -38,7 +38,7 @@ $start_from=($page-1)*$num_per_page;
 </ul>
 <div id="startexam">
 <?php
-$sql="Select * from question  limit $start_from,$num_per_page";
+$sql="Select * from question where online_exam_id='".$id."' limit $start_from,$num_per_page ";
 $result=$conn->query($sql);
 if ($result->num_rows>0) {
     while ($rows=$result->fetch_assoc()) {
@@ -62,23 +62,28 @@ if ($result->num_rows>0) {
 
 </div>
 <?php
-if ($page>1) {
-    echo "<a id='NP' href='startExam.php?page=".($page-1)."'>Previous</a>";
-}
 if ($page==1) {
-    echo "<a id='NP' href='startExam.php?page=".($page+1)."'>Next</a>";
+    echo "<a id='NP' href='startExam.php?id=".$id." && page=".($page+1)."'>Next</a>";
 }
-if ($page>1 || $page==$total_page) {
-    echo "<a id='NP' href='startExam.php?page=".($page+1)."'>Next</a>";
-}
+
 ?>
 <?php
 $sql3="Select * from question where online_exam_id='".$id."'";
 $result3=$conn->query($sql3);
 $count=$result3->num_rows;
 $total_page=ceil($count/$num_per_page);
+if ($page>1 && $page!=$total_page) {
+    echo "<a id='NP' href='startExam.php?id=".$id." && page=".($page+1)."'>Next</a>";
+}
+
+if ($page>1 && $page!=$total_page) {
+    echo "<a id='NP' href='startExam.php?id=".$id." &&  page=".($page-1)."'>Previous</a>";
+}
+if($page>1 && $page==$total_page) {
+    echo "<a id='NP' href='startExam.php?id=".$id." &&  page=".($page-1)."'>Previous</a>";
+}
 for ($i=1;$i<=$total_page;$i++) {
-    echo "<a id='NP' href='startExam.php?page=".$i."'>$i</a>";
+    //echo "<a id='NP' href='startExam.php?page=".$i."'>$i</a>";
 }
 ?>
 </div>
