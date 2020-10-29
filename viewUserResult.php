@@ -28,6 +28,7 @@
 <th>Exam Name</th>
 <th>Total Marks</th>
 <th>Marks Achieve</th>
+<th>Result</th>
 </tr>
 <?php
 $sql2="select * from result ";
@@ -38,11 +39,13 @@ if ($result->num_rows>0) {
         $en=$rows['exam_name'];
         $tm=$rows['total_marks'];
         $ym=$rows['your_marks'];
+        $status=$rows['status'];
         echo '<tr>
         <td>'.$um.'</td>
         <td>'.$en.'</td>
         <td>'.$tm.'</td>
         <td>'.$ym.'</td>
+        <td>'.$status.'</td>
         </tr>';
     }
 }

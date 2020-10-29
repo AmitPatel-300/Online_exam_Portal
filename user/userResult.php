@@ -34,6 +34,7 @@ if ($email == '') {
 <th>Exam Name</th>
 <th>Total Marks</th>
 <th>Your Marks</th>
+<th>Result</th>
 </tr>
 <?php
 $sql2="select * from result where user_email='".$email."' ";
@@ -43,10 +44,12 @@ if ($result->num_rows>0) {
         $en=$rows['exam_name'];
         $tm=$rows['total_marks'];
         $ym=$rows['your_marks'];
+        $status=$rows['status'];
         echo '<tr>
         <td>'.$en.'</td>
         <td>'.$tm.'</td>
         <td>'.$ym.'</td>
+        <td>'.$status.'</td>
         </tr>';
     }
 }

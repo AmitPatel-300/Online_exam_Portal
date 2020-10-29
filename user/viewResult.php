@@ -10,7 +10,7 @@
  * @license  https://opensource.org/licenses/MIT MIT license
  * @link     http://localhost/
  */
-global $id,$examname,$total_marks,$your_score;
+global $id,$examname,$total_marks,$your_score,$avg;
 $id=$_REQUEST['id'];
 ?>
 <?php
@@ -31,10 +31,12 @@ if (isset($_POST['submit'])) {
     $useremail=isset($_POST['useremail'])?$_POST['useremail']:'';
     $tm=isset($_POST['tm'])?$_POST['tm']:'';
     $ym=isset($_POST['ym'])?$_POST['ym']:'';
+    $sta=isset($_POST['status'])?$_POST['status']:'';
 
     $sql="INSERT into result (`session_id`, `exam_name`, 
-    `user_email`, `total_marks`,`your_marks`) VALUES 
-    ('".$sessionid."','".$ename."', '".$useremail."', '".$tm."', '".$ym."')";
+    `user_email`, `total_marks`,`your_marks`,`status`) VALUES 
+    ('".$sessionid."','".$ename."', '".$useremail."', '".$tm."', '".$ym."', 
+    '".$sta."')";
     if ($conn-> query($sql) === true) {
         header('location:user.php');
     } else {
@@ -55,9 +57,8 @@ if ($result->num_rows>0) {
 }
 ?>
 
-<div id="add">
-<div id="nav2">
-Result...
+<div id="NAV">
+<div id="NAV">
 <table>
 <tr>
 <th>Exam Name</th>
@@ -74,8 +75,8 @@ $sql2="select * from user_answer where online_exam_id='".$id."'";
 $result=$conn->query($sql2);
 $count=$result->num_rows;
 $total_marks=$count*$mr;
-echo '<p>Total Marks :: ';
-echo $total_marks;
+$avg=ceil($total_marks/2);
+echo '<p>Total Marks :: ';echo $total_marks;
 echo '</p>';
 if ($result->num_rows>0) {
     while ($rows=$result->fetch_assoc()) {
@@ -106,6 +107,16 @@ if ($result->num_rows>0) {
 echo '<p>Your Marks :: ';
 echo $your_score;
 echo '</p>';
+
+echo '<p>Result :: ';
+if ($your_score >$avg) {
+    $status="Pass";
+    echo $status;
+} else {
+    $status="Fail";
+    echo $status;
+}
+echo '</p>';
 ?>
 </table>
 <form action="viewResult.php" method="POST">
@@ -114,6 +125,7 @@ echo '</p>';
 <input type="hidden" name="useremail" value="<?php echo $email?>">
 <input type="hidden" name="tm" value="<?php echo $total_marks?>">
 <input type="hidden" name="ym" value="<?php echo $your_score?>">
+<input type="hidden" name="status" value="<?php echo $status?>">
 <input id="home" type="submit" name="submit" value="Home">
 </form>
 </div>
