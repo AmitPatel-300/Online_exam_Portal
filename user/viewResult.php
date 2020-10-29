@@ -33,10 +33,10 @@ if (isset($_POST['submit'])) {
     $ym=isset($_POST['ym'])?$_POST['ym']:'';
 
     $sql="INSERT into result (`session_id`, `exam_name`, 
-    `user_email`,  `$total_marks`,`your_marks`) VALUES 
+    `user_email`, `total_marks`,`your_marks`) VALUES 
     ('".$sessionid."','".$ename."', '".$useremail."', '".$tm."', '".$ym."')";
     if ($conn-> query($sql) === true) {
-        echo '<script></script>';
+        header('location:user.php');
     } else {
         $errors= array('input' => 'form', 'msg'=> $conn->error);
     }

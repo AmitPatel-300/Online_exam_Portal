@@ -26,6 +26,7 @@ if ($email == '') {
 <li><a href="admin.php">Admin Side</a>
 <li><a href="exam.php">Exam</a>
 <li><a href="user.php">User</a>
+<li><a href="viewUserResult.php">Results</a>
 <li><a href="logout.php">Logout</a>
 </ul>
 Click on Exam tab to view exam list....

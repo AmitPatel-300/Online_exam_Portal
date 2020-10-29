@@ -3,7 +3,7 @@
 <div id="head">ONLINE EXAM PORTAL
 <div id="nav">
 <ul>
-<li><a href="homepage.php">Home</a>
+<li>
 </ul>
 <div>
 <div>

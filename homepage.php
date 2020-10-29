@@ -53,7 +53,6 @@ if (isset($_POST['submit'])) {
             while ($rows=$result->fetch_assoc()) {
                 if ($rows['email']== $email && $rows['password']==$pass) {
                     $_SESSION['userEmail']=$email;
-                    $_SESSION['sessionid']=uniqid();
                     header('location:user/user.php');
                 } else {
                     $login="Email or password not match";

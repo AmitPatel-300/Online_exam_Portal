@@ -21,7 +21,7 @@ if ($email == '') {
     $se="please login first";
     header('location:../homepage.php');
 }
-$session=$_SESSION['sessionid'];
+$_SESSION['sessionid']=uniqid();
 ?>
 <?php include 'header.php';?>
 <?php include 'config.php' ?>
@@ -55,7 +55,7 @@ if (isset($_POST['select'])) {
 <ul>
 <li><a href="user.php">User Side</a>
 <li><a href="profile.php">Profile</a>
-<li><a href="result.php">Result</a>
+<li><a href="userResult.php">Result</a>
 <li><a href="logout.php">Logout</a>
 </ul>
 Select Your exam...<br><br>

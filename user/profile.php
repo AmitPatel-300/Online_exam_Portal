@@ -40,7 +40,7 @@ if ($result->num_rows>0) {
 <ul>
 <li><a href="user.php">User Side</a>
 <li><a href="profile.php">Profile</a>
-<li><a href="result.php">Result</a>
+<li><a href="userResult.php">Result</a>
 <li><a href="logout.php">Logout</a>
 </ul>
 Profile Detail

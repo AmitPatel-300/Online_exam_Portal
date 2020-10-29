@@ -22,37 +22,27 @@
 <li><a href="viewUserResult.php">Results</a>
 <li><a href="logout.php">Logout</a>
 </ul>
-Users List
 <table>
 <tr>
-<th>User Name</th>
-<th>Email</th>
-<th>Password</th>
-<th>Date Of Birth</th>
-<th>Mobile No.</th>
-<th>Address</th>
-<th>Action</th>
+<th>User Email</th>
+<th>Exam Name</th>
+<th>Total Marks</th>
+<th>Marks Achieve</th>
 </tr>
 <?php
-$sql2="select * from users";
+$sql2="select * from result ";
 $result=$conn->query($sql2);
 if ($result->num_rows>0) {
     while ($rows=$result->fetch_assoc()) {
-        $uid=$rows['user_id'];
-        $uname=$rows['user_name'];
-        $email=$rows['email'];
-        $pass=$rows['password'];
-        $dob=$rows['dob'];
-        $mno=$rows['mobile_no'];
-        $add=$rows['address'];
+        $um=$rows['user_email'];
+        $en=$rows['exam_name'];
+        $tm=$rows['total_marks'];
+        $ym=$rows['your_marks'];
         echo '<tr>
-        <td>'.$uname.'</td>
-        <td>'.$email.'</td>
-        <td>'.$pass.'</td>
-        <td>'.$dob.'</td>
-        <td>'.$mno.'</td>
-        <td>'.$add.'</td>
-        <td id="row" ><a href="deleteUser.php?id='.$uid.'">Delete</a></td>
+        <td>'.$um.'</td>
+        <td>'.$en.'</td>
+        <td>'.$tm.'</td>
+        <td>'.$ym.'</td>
         </tr>';
     }
 }
@@ -60,4 +50,4 @@ if ($result->num_rows>0) {
 </table>
 </div>
 </div>
-<?php include 'footer.php';?>
+<?php include 'footer.php'?>
