@@ -296,7 +296,7 @@ td{
 }
 #startexam{
     width: justify;
-    height: 200px;
+    height: 260px;
     margin-top: 50px;
     border: 1px solid black;
 }
@@ -324,4 +324,20 @@ padding-left: 20px;
     margin-left: 20px;
     background-color:darkblue;
     width: 80px;
+    height: 25px;
+    font-size: 14px;
+    text-align: center;
+    padding-top: 6px;
+    border-radius: 0.6em;
+    margin-top: 20px;
+}
+
+#option{
+    float: left;
+    padding-left: 10px;
+    margin-left: 20px;
+   color: white;
+    background-color:darkblue;
+    width: 80px;
+
 }
