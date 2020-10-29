@@ -38,6 +38,7 @@ if (isset($_GET['page'])) {
 $num_per_page=1;
 $start_from=($page-1)*$num_per_page;
 ?>
+
 <?php 
 if(isset($_POST['submit'])) {
     $qid=isset($_POST['quesid'])?$_POST['quesid']:'';
@@ -75,7 +76,7 @@ $count=$result3->num_rows;
 $total_page=ceil($count/$num_per_page);
 ?>
 <?php if ($page>$total_page) {
-//
+header("location:viewResult.php?id=$id");
 }
 ?>
 <div id="add">
