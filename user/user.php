@@ -21,6 +21,7 @@ if ($email == '') {
     $se="please login first";
     header('location:../homepage.php');
 }
+$session=$_SESSION['sessionid'];
 ?>
 <?php include 'header.php';?>
 <?php include 'config.php' ?>

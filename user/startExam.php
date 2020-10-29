@@ -25,8 +25,7 @@ if ($email == '') {
     $se="please login first";
     header('location:../homepage.php');
 }
-$_SESSION['sessionid']=uniqid();
-echo $_SESSION['sessionid'];
+$session=$_SESSION['sessionid'];
 ?>
 <?php include 'header.php';?>
 <?php include 'config.php' ?>
@@ -49,13 +48,21 @@ if(isset($_POST['submit'])) {
     $opt4=isset($_POST['opt4'])?$_POST['opt4']:'';
     $ans=isset($_POST['ans'])?$_POST['ans']:'';
     $user_ans=$_POST['selected'];
-    
-    $sql="INSERT into user_answer (`user_email`, `online_exam_id`, 
+
+    $SQL="DELETE FROM user_answer WHERE `session_id`='".$session."' && question='".$qt."'";
+    $RESULT=$conn->query($SQL);
+    if ($RESULT === true) {
+    //echo '<script>alert("deleted");</script>';
+    } else {
+    $errors= array('input' => 'form', 'msg'=> $conn->error);
+    }
+
+    $sql="INSERT into user_answer (`session_id`, `online_exam_id`, 
     `ques_id`,`question`,`option1`,  `option2`,`option3`, `option4`,`correct_ans`,`user_ans`) VALUES 
-    ('".$email."','".$id."', '".$qid."', '".$qt."', 
+    ('".$session."','".$id."', '".$qid."', '".$qt."', 
     '".$opt1."','".$opt2."','".$opt3."', '".$opt4."','".$ans."','".$user_ans."')";
     if ($conn-> query($sql) === true) {
-        echo '<script>alert("inserted");</script>';
+       // echo '<script>alert("inserted");</script>';
     } else {
         $errors= array('input' => 'form', 'msg'=> $conn->error);
     }
@@ -105,7 +112,7 @@ if ($result->num_rows>0) {
       <input type="hidden" name="ans" value="<?php echo $ans?>">
       <input type="hidden" name="selected" value="0">
       <?php
-      $sql2="SELECT * from user_answer where user_email='".$email."' && question='".$qt."'";
+      $sql2="SELECT * from user_answer where session_id='".$session."' && question='".$qt."'";
       $result2=$conn->query($sql2);
       if ($result2->num_rows>0) {
           while ($rows2=$result2->fetch_assoc()) {
