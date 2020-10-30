@@ -20,6 +20,9 @@ if ($email == '') {
     $se="please login first";
     header('location:../homepage.php');
 }
+if ($id=='0') {
+    header("location:user.php");
+}
 $session=$_SESSION['sessionid'];
 ?>
 <?php include 'header.php';?>

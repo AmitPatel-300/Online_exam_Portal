@@ -70,7 +70,7 @@ if (isset($_POST['submit'])) {
 <form action="homepage.php" method="POST">
 <label>LOGIN TYPE</label>
 <select name="sel">
-<option value="0">Select login type</option><?php echo $err?>
+<option value="0">Select login type</option>
 <option value="1">Admin</option>
 <option value="2">User</option>
 </select><br>
@@ -81,6 +81,8 @@ if (isset($_POST['submit'])) {
 <input type="submit" name="submit" value="login"><br><br>
 <a href="user/register.php">New User?</a>
 </form>
+<?php echo $err;?>
+<?php echo $login;?>
 </div>
 </div>
 </body>

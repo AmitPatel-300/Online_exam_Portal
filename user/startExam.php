@@ -31,7 +31,7 @@ $session=$_SESSION['sessionid'];
 <?php include 'config.php' ?>
 <?php
 if (isset($_GET['page'])) {
-   $page=$_GET['page'];
+    $page=$_GET['page'];
 } else {
     $page=1;
 }
@@ -40,7 +40,7 @@ $start_from=($page-1)*$num_per_page;
 ?>
 
 <?php 
-if(isset($_POST['submit'])) {
+if (isset($_POST['submit'])) {
     $qid=isset($_POST['quesid'])?$_POST['quesid']:'';
     $qt=isset($_POST['ques'])?$_POST['ques']:'';
     $opt1=isset($_POST['opt1'])?$_POST['opt1']:'';
@@ -50,20 +50,21 @@ if(isset($_POST['submit'])) {
     $ans=isset($_POST['ans'])?$_POST['ans']:'';
     $user_ans=$_POST['selected'];
 
-    $SQL="DELETE FROM user_answer WHERE `session_id`='".$session."' && question='".$qt."'";
+    $SQL="DELETE FROM user_answer WHERE `session_id`='".$session."' &&
+     question='".$qt."'";
     $RESULT=$conn->query($SQL);
     if ($RESULT === true) {
-    //echo '<script>alert("deleted");</script>';
+                //echo '<script>alert("deleted");</script>';
     } else {
-    $errors= array('input' => 'form', 'msg'=> $conn->error);
+             $errors= array('input' => 'form', 'msg'=> $conn->error);
     }
 
     $sql="INSERT into user_answer (`session_id`, `online_exam_id`, 
-    `ques_id`,`question`,`option1`,  `option2`,`option3`, `option4`,`correct_ans`,`user_ans`) VALUES 
-    ('".$session."','".$id."', '".$qid."', '".$qt."', 
+    `ques_id`,`question`,`option1`,  `option2`,`option3`, `option4`,
+    `correct_ans`,`user_ans`) VALUES ('".$session."','".$id."', '".$qid."', '".$qt."', 
     '".$opt1."','".$opt2."','".$opt3."', '".$opt4."','".$ans."','".$user_ans."')";
     if ($conn-> query($sql) === true) {
-       // echo '<script>alert("inserted");</script>';
+        // echo '<script>alert("inserted");</script>';
     } else {
         $errors= array('input' => 'form', 'msg'=> $conn->error);
     }
@@ -76,7 +77,7 @@ $count=$result3->num_rows;
 $total_page=ceil($count/$num_per_page);
 ?>
 <?php if ($page>$total_page) {
-header("location:viewResult.php?id=$id");
+    header("location:viewResult.php?id=$id");
 }
 ?>
 <div id="add">
@@ -100,8 +101,9 @@ if ($result->num_rows>0) {
         $opt3=$rows['option3'];
         $opt4=$rows['option4'];
         $ans=$rows['ansoption'];
-      ?>   
-      <form action="startExam.php?page=<?php echo ($page+1);?>&id=<?php echo $id;?>" method=POST>
+        ?>   
+      <form action="startExam.php?page=<?php echo ($page+1);?>&id=<?php echo
+        $id;?>" method=POST>
       <p id="ques">Q.<?php echo $page;?> <?php echo $qt;?></p>
       <p id="radioques">
       <input type="hidden" name="quesid" value="<?php echo $qid?>">
@@ -112,25 +114,35 @@ if ($result->num_rows>0) {
       <input type="hidden" name="opt4" value="<?php echo $opt4?>">
       <input type="hidden" name="ans" value="<?php echo $ans?>">
       <input type="hidden" name="selected" value="0">
-      <?php
-      $sql2="SELECT * from user_answer where session_id='".$session."' && question='".$qt."'";
-      $result2=$conn->query($sql2);
-      if ($result2->num_rows>0) {
-          while ($rows2=$result2->fetch_assoc()) {
-              $Ans=$rows2['user_ans'];
-          }
-      }
-      ?>
-      <input type="radio" name="selected" value="1" id="opt1" <?php if($Ans==1):?>checked<?php endif?>><?php echo $opt1;?><br>
-      <input type="radio" name="selected" value="2" id="opt2" <?php if($Ans==2):?>checked<?php endif?>><?php echo $opt2;?><br>
-      <input type="radio" name="selected" value="3" id='opt3' <?php if($Ans==3):?>checked<?php endif?>><?php echo $opt3;?><br>
-      <input type="radio" name="selected" value="4" id="opt4" <?php if($Ans==4):?>checked<?php endif?>><?php echo $opt4;?><br>
-      <?php if ($page ==1):?><input id="option" type="submit" name="submit" value="Next">
-      <?php endif?>
-      <?php if ($page>1 && $page!=$total_page):?><?php echo "<a id='NP' href='startExam.php?page=".($page-1)."&id=".$id."'>Previous</a>";?>
+        <?php
+        $sql2="SELECT * from user_answer where session_id='".$session."' &&
+       question='".$qt."'";
+        $result2=$conn->query($sql2);
+        if ($result2->num_rows>0) {
+            while ($rows2=$result2->fetch_assoc()) {
+                $Ans=$rows2['user_ans'];
+            }
+        }
+        ?>
+      <input type="radio" name="selected" value="1" id="opt1" <?php if ($Ans==1) :?>
+      checked<?php endif ?>><?php echo $opt1;?><br>
+      <input type="radio" name="selected" value="2" id="opt2" <?php if ($Ans==2) :?>
+      checked<?php endif?>><?php echo $opt2;?><br>
+      <input type="radio" name="selected" value="3" id='opt3' <?php if ($Ans==3) :?>
+      checked<?php endif?>><?php echo $opt3;?><br>
+      <input type="radio" name="selected" value="4" id="opt4" <?php if ($Ans==4) :?>
+      checked<?php endif?>><?php echo $opt4;?><br>
+        <?php if ($page ==1) :?><input id="option" type="submit" 
+      name="submit" value="Next">
+        <?php endif ?>
+        <?php if ($page>1 && $page!=$total_page) :?><?php echo 
+        "<a id='NP' href='startExam.php?page=".($page-1)."&id=".$id."'>
+        Previous</a>";?>
       <input id="option" type="submit" name="submit" value="Next">
-      <?php endif?>
-      <?php if ($page>1 && $page==$total_page):?><?php echo "<a id='NP' href='startExam.php?page=".($page-1)."&id=".$id."'>Previous</a>";?>
+        <?php endif ?>
+        <?php if ($page>1 && $page==$total_page) :?><?php echo 
+        "<a id='NP' href='startExam.php?page=".($page-1)."&id=".$id."'>
+        Previous</a>";?>
         <input id="option" type="submit" name="submit" value="Finish">
         <?php endif?>
        </p>

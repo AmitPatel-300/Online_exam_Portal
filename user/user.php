@@ -75,7 +75,8 @@ if ($result->num_rows>0) {
 }
 ?>
  </select> <br>
- <input id="selexam" type="submit" name="select" value="click to view exam details" style="width:300px;color:red">
+ <input id="selexam" type="submit" name="select"
+ value="click to view exam details" style="width:300px;color:red">
 </form>
  <div id="examform"><br>
      Exam detail
