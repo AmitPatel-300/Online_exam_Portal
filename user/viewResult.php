@@ -74,7 +74,7 @@ if ($result->num_rows>0) {
 <th>Your Answer</th>
 </tr>
 <?php
-$sql2="select * from user_answer where online_exam_id='".$id."'";
+$sql2="select * from user_answer where online_exam_id='".$id."' && session_id='".$session."'";
 $result=$conn->query($sql2);
 $count=$result->num_rows;
 $total_marks=$count*$mr;
