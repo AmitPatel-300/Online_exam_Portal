@@ -103,7 +103,10 @@ if ($result->num_rows>0) {
         if ($user_ans==$correct_ans) {
             $your_score=$your_score+$mr;
         } else {
-            $your_score=$your_score-$mw;
+            if ($user_ans==0) {
+                continue;
+                $your_score=$your_score-$mw;
+            }
         }
     }
 }
